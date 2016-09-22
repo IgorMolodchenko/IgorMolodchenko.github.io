@@ -1,46 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<title>Ajax Form Serj Belousov</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="jquery.sendFormLP.js"></script>
-
-	<style>
-		input{
-			padding: 4px 10px;
-		}
-		.error{
-			border-color: red;
-		}
-	</style>
-</head>
-<body>
-	
-	<!--Пример формы-->
-	<!--ПДокумнтация http://sergeibelousov.ru/plagin-ajax-otpravka-formy-na-pochtu.html-->
-
-	<form id="form">
-    <input type="text" name="name" required="required"/>
-    <input type="text" name="phone" required="required"/>
-    <input type="submit" value="Заказать звонок"/>
-</form>
-
-	<script type="text/javascript">
-$(document).ready(function(){
-    $("#form").submit(function() { //устанавливаем событие отправки для формы с id=form
-            var form_data = $(this).serialize(); //собераем все данные из формы
-            $.ajax({
-            type: "POST", //Метод отправки
-            url: "send.php", //путь до php фаила отправителя
-            data: form_data,
-            success: function() {
-                   //код в этом блоке выполняется при успешной отправке сообщения
-                   alert("Ваше сообщение отпрвлено!");
-            });
-    });
-});    
-</script>
-	
-</body>
-</html>
+<html><body> 
+ 
+<form action= "send.php" method= "POST"> 
+ 
+<p>Имя: </p><p> <input type= "text" name= "name"> </p> 
+ 
+<p>E-mail: </p><p> <input type= "text" name= "email"></p> 
+ 
+<p>Сообщение: </p><p> <textarea rows= "10" cols= "45" name= "message"></textarea></p> 
+ 
+<input type= "submit" value= "Отправить"> 
+ 
+</body></html> 
