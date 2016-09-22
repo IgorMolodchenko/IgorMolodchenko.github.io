@@ -82,8 +82,8 @@
 $(function(){
 
 	$('form').sendFormLP({
-		toEmail: 'info@sergeibelousov.ru',
-		fromEmail: 'serj@mail.ru',
+		toEmail: 'molodchenko14@gmail.com',
+		fromEmail: 'molodchenko14@gmail.com',
 		interval: 1000
 	});
 
