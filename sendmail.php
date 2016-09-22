@@ -1,7 +1,19 @@
 <?
-if (isset($_POST['m_data'])) {$m_data = $_POST['m_data'];}
-if (isset($_POST['toEmail'])) {$toEmail = $_POST['toEmail'];}
-if (isset($_POST['fromEmail'])) {$fromEmail = $_POST['fromEmail'];}
-if (isset($_POST['them'])) {$them = $_POST['them'];}
-
-$send = mail($toEmail,$them,$m_data,"Content-type:text/plain; charset = utf-8\r\nFrom:$fromEmail");
+if((isset($_POST['name'])&&$_POST['name']!="")&&(isset($_POST['phone'])&&$_POST['phone']!="")){ //Проверка отправилось ли наше поля name и не пустые ли они
+        $to = 'mail@yandex.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+        $subject = 'Обратный звонок'; //Загаловок сообщения
+        $message = '
+                <html>
+                    <head>
+                        <title>'.$subject.'</title>
+                    </head>
+                    <body>
+                        <p>Имя: '.$_POST['name'].'</p>
+                        <p>Телефон: '.$_POST['phone'].'</p>                        
+                    </body>
+                </html>'; //Текст нащего сообщения можно использовать HTML теги
+        $headers  = "Content-type: text/html; charset=utf-8 \r\n"; //Кодировка письма
+        $headers .= "From: Отправитель <from@example.com>\r\n"; //Наименование и почта отправителя
+        mail($to, $subject, $message, $headers); //Отправка письма с помощью функции mail
+}
+?>
